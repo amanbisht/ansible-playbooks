@@ -1,0 +1,8 @@
+---
+- name: install and configure webservers
+  hosts: test-server
+  remote_user: ubuntu
+  become: yes
+  roles: 
+     - webservers
+
