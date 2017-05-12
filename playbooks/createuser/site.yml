@@ -1,0 +1,8 @@
+---
+- name: create a new user (ftp)
+  hosts: app
+  remote_user: ubuntu
+  become: yes
+  roles:
+     - createuser
+

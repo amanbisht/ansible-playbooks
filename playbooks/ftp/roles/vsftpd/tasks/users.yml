@@ -1,0 +1,20 @@
+---
+
+- name: Adding users
+  vars:
+    vsftpd_service_enabled: yes
+    vsftpd_service_state: started
+    vsftpd_users:
+       - username: testuser2
+         name: FTP User
+         password: '$6$UG4yeFeVeW$IUK.XpaUuG10yWzkxT27hjGh7JGrwYLoXVEp4J73Fs.h9Wu7N1128.9ZBQqhXi1XuRGtpk.yZ6O9s48pcnX/F1'
+  user: >
+    name={{ item.username }}
+    comment={{ item.username|default(item.username) }}
+    password={{ item.password }}
+    shell=/usr/sbin/nologin
+  with_items: "{{ vsftpd_users }}"
+  tags:
+    - networking
+    - vsftpd
+    - users

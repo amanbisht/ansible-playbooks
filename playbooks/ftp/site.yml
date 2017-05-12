@@ -1,0 +1,8 @@
+---
+
+- name: install and comfigure FTP server
+  hosts: app
+  remote_user: ubuntu
+  become: yes
+  roles:
+     - jonasVermassen.vsftpd 

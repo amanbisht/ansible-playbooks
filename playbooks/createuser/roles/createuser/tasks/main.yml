@@ -1,0 +1,18 @@
+---
+
+- name: Adding users
+  vars:
+    users:
+    - username: testuser
+      name: FTP User
+      password: '$6$UG4yeFeVeW$IUK.XpaUuG10yWzkxT27hjGh7JGrwYLoXVEp4J73Fs.h9Wu7N1128.9ZBQqhXi1XuRGtpk.yZ6O9s48pcnX/F1'
+  user: >
+    name={{ item.username }}
+    comment={{ item.username|default(item.username) }}
+    password={{ item.password }}
+    shell=/usr/sbin/nologin
+  with_items: "{{ users }}"
+  tags:
+    - networking
+    - vsftpd
+    - users
